@@ -1,0 +1,71 @@
+root@autodl-container-b5c14e88ea-33d239a2:~/autodl-tmp/radar# python mainv3.py
+2023-12-06 12:03:48.089344: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+X_train.shape: (1157, 10, 256, 256, 3)
+X_test.shape: (290, 10, 256, 256, 3)
+y_train.shape: (1157, 10, 256, 256, 1)
+y_test.shape: (290, 10, 256, 256, 1)
+2023-12-06 12:06:20.181594: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
+2023-12-06 12:06:20.221687: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties:
+pciBusID: 0000:41:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.69GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-12-06 12:06:20.221739: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2023-12-06 12:06:20.224730: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
+2023-12-06 12:06:20.224763: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
+2023-12-06 12:06:20.225634: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcufft.so.10
+2023-12-06 12:06:20.225859: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcurand.so.10
+2023-12-06 12:06:20.226570: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusolver.so.11
+2023-12-06 12:06:20.227107: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusparse.so.11
+2023-12-06 12:06:20.227251: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
+2023-12-06 12:06:20.228385: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0
+2023-12-06 12:06:20.228801: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-12-06 12:06:20.236870: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties:
+pciBusID: 0000:41:00.0 name: NVIDIA GeForce RTX 3090 computeCapability: 8.6
+coreClock: 1.695GHz coreCount: 82 deviceMemorySize: 23.69GiB deviceMemoryBandwidth: 871.81GiB/s
+2023-12-06 12:06:20.237881: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0
+2023-12-06 12:06:20.237923: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2023-12-06 12:06:20.737894: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
+2023-12-06 12:06:20.737937: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]      0
+2023-12-06 12:06:20.737944: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1277] 0:   N
+2023-12-06 12:06:20.739758: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 22311 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce RTX 3090, pci bus id: 0000:41:00.0, compute capability: 8.6)
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+conv_lst_m2d (ConvLSTM2D)    (None, 10, 256, 256, 32)  219648
+_________________________________________________________________
+batch_normalization (BatchNo (None, 10, 256, 256, 32)  128
+_________________________________________________________________
+conv_lst_m2d_1 (ConvLSTM2D)  (None, 10, 256, 256, 32)  204928
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 10, 256, 256, 32)  128
+_________________________________________________________________
+conv_lst_m2d_2 (ConvLSTM2D)  (None, 10, 256, 256, 32)  73856
+_________________________________________________________________
+batch_normalization_2 (Batch (None, 10, 256, 256, 32)  128
+_________________________________________________________________
+conv_lst_m2d_3 (ConvLSTM2D)  (None, 10, 256, 256, 32)  8320
+_________________________________________________________________
+conv3d (Conv3D)              (None, 10, 256, 256, 1)   865
+=================================================================
+Total params: 508,001
+Trainable params: 507,809
+Non-trainable params: 192
+_________________________________________________________________
+2023-12-06 12:06:37.853185: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
+2023-12-06 12:06:37.872304: I tensorflow/core/platform/profile_utils/cpu_utils.cc:114] CPU Frequency: 2900060000 Hz
+Epoch 1/5
+2023-12-06 12:07:09.518376: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
+2023-12-06 12:07:10.543442: I tensorflow/stream_executor/cuda/cuda_dnn.cc:359] Loaded cuDNN version 8101
+2023-12-06 12:07:11.335944: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
+2023-12-06 12:07:11.918726: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
+290/290 [==============================] - 393s 1s/step - loss: 0.2105 - accuracy: 0.8128 - val_loss: 0.2728 - val_accuracy: 0.8108
+Epoch 2/5
+290/290 [==============================] - 348s 1s/step - loss: 0.1693 - accuracy: 0.8300 - val_loss: 0.2423 - val_accuracy: 0.8108
+Epoch 3/5
+290/290 [==============================] - 348s 1s/step - loss: 0.1674 - accuracy: 0.8335 - val_loss: 0.2358 - val_accuracy: 0.8108
+Epoch 4/5
+290/290 [==============================] - 348s 1s/step - loss: 0.1631 - accuracy: 0.8365 - val_loss: 0.2027 - val_accuracy: 0.8108
+Epoch 5/5
+290/290 [==============================] - 347s 1s/step - loss: 0.1746 - accuracy: 0.8233 - val_loss: 0.1985 - val_accuracy: 0.8108
+{'loss': [0.18354836106300354, 0.17245180904865265, 0.1711210161447525, 0.17001664638519287, 0.16912834346294403], 'accuracy': [0.8262140154838562, 0.8280779719352722, 0.8280783295631409, 0.8280781507492065, 0.8280785083770752], 'val_loss': [0.2727755606174469, 0.24228602647781372, 0.23577754199504852, 0.20273640751838684, 0.19851109385490417], 'val_accuracy': [0.810768723487854, 0.810768723487854, 0.810768723487854, 0.810768723487854, 0.810768723487854]}
