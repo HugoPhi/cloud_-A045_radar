@@ -11,11 +11,11 @@ from keras.callbacks import EarlyStopping, LearningRateScheduler, ModelCheckpoin
 # Load data
 dir = '/root/autodl-tmp/NJU_CPOL_update2308'
 altitude = '1.0km'
-datasets = dl.load_data(dir, altitude, 5)
+datasets = dl.load_data(dir, altitude, 20)
 
 # Set window size and stride
 window_size = 10
-overlap = 0.7
+overlap = 0.5
 
 # Preprocess data
 X_train, X_test, y_train, y_test = dp.load_xy(datasets, range(len(datasets)), window_size, overlap, dp.norm_param)
@@ -94,17 +94,17 @@ def lr_schedule(epoch):
 lr_scheduler = LearningRateScheduler(lr_schedule)
 
 # Add model checkpointing for saving the best model
-model_checkpoint = ModelCheckpoint('./model/best_model.h5', save_best_only=True)
+model_checkpoint = ModelCheckpoint('./model/best_model_2.h5', save_best_only=True)
 
 # Add model visualization using TensorBoard
-tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0, write_graph=True, write_images=False)
+tensorboard = TensorBoard(log_dir='./logs_2', histogram_freq=0, write_graph=True, write_images=False)
 
 # Train the model with the defined callbacks
 history = model.fit(
     X_train,
     y_train[:, :, :, :, 0:1],
-    epochs=20,
-    batch_size=2,
+    epochs=50,
+    batch_size=1,
     validation_data=(X_test, y_test[:, :, :, :, 0:1]),
     callbacks=[early_stopping, lr_scheduler, model_checkpoint, tensorboard]
 )
